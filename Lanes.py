@@ -6,7 +6,7 @@ from numpy.lib.function_base import average
 
 cap = cv2.VideoCapture('cars2.mp4')
 
-
+## defining the left and right line
 def make_coordinates( video, line_parameters):
     print(f"LINE PARAMAS {line_parameters}")
     print(line_parameters.shape)
@@ -18,7 +18,7 @@ def make_coordinates( video, line_parameters):
     return np.array([x1,y1,x2,y2])
 
 
-
+## calc the left lane and the right lane
 def average_slope_intercept(video, lines):
     left_fit=[]
     right_fit=[]
@@ -40,13 +40,14 @@ def average_slope_intercept(video, lines):
     right_line = make_coordinates(video, right_fit_average)
     return np.array([left_line, right_line])
 
-
+## preprossecing the video, grayscaling, blur and canny
 def Canny(video):
     gray = cv2.cvtColor(video, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5,5), 0)
     canny = cv2.Canny(blur, 50, 150)
     return canny
 
+## Definining the left and right lane/line and draw them
 def display_lines(video, lines):
     line_video = np.zeros_like(video)
     if lines is not None:
@@ -55,6 +56,7 @@ def display_lines(video, lines):
             cv2.line(line_video, (int(x1), int(y1)), (int(x2), int(y2)), (255,0,0), 10)
     return line_video
 
+## Defining the drivers lane
 def region_of_interest(video):
     height = video.shape[0]
     print(height)
@@ -66,7 +68,7 @@ def region_of_interest(video):
     return masked_video
 
 
-
+## Showing the Video
 while cap.isOpened():
     ret, frame = cap.read()
     canny_image = Canny(frame)
