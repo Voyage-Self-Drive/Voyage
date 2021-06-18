@@ -61,10 +61,14 @@ def region_of_interest(video):
 def fill_area(video, res_lines):
     res = np.zeros_like(video)
     if res_lines is not None:
-        top_left, bottom_right = (int(res_lines[0][0]), int(res_lines[0][1])), (int(res_lines[1][2]), int(res_lines[1][3]))
-        top_right, bottom_left = (int(res_lines[1][2]), int(res_lines[1][3])), (int(res_lines[1][0]), int(res_lines[1][1]))
-        points = np.array([top_left, bottom_right, top_right, bottom_left])
+        top_left, top_right = (res_lines[0][0], res_lines[0][1]), (res_lines[0][2], res_lines[0][3])
+        bottom_left, bottom_right = (res_lines[1][0], res_lines[1][1]), (res_lines[1][2], res_lines[1][3])
+        points = np.array([top_left, top_right, bottom_right, bottom_left]).astype(int)
         res = cv2.fillPoly(img=video, pts=[points], color=(0, 250, 0))
+        for x1, y1, x2, y2 in res_lines:
+            res = cv2.circle(res, (int(x1), int(y1)), radius=10, color=(0, 255, 0), thickness=-1)
+            res = cv2.circle(res, (int(x2), int(y2)), radius=10, color=(0, 255, 0), thickness=-1)
+
     return res
 
 
