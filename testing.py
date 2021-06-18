@@ -8,8 +8,6 @@ cap = cv2.VideoCapture('cars2.mp4')
 
 ## defining the left and right line
 def make_coordinates( video, line_parameters):
-    print(f"LINE PARAMAS {line_parameters}")
-    print(line_parameters.shape)
     slope, intercept = line_parameters
     y1 = video.shape[0]
     y2 = int(y1* (0.5))
@@ -32,21 +30,16 @@ def average_slope_intercept(video, lines):
 
         # start and end codinates of a line
         p = line.reshape(4)
-        print(f"LINE RAW {line.shape}|{line}/ {p}| {p.shape}")
         x1,y1,x2,y2 = line.reshape(4) # (removes uneeded dimenison from (1,4) to (4,)
 
         # polyfit calculates the slope of the line
         parameters = np.polyfit((x1, x2), (y1, y2), 1)
         slope = parameters[0]
-        print(f"PARAMETERS: {parameters}")
         intercept = parameters[1]
         if slope < 0:
             left_fit.append((slope, intercept))
         else:
             right_fit.append((slope, intercept))
-    print("XXXXXXXXXXXXX")
-    for l in left_fit:
-        print(l)
 
     left_fit_average = np.average(left_fit, axis = 0)
     right_fit_average = np.average( right_fit, axis= 0)
@@ -63,8 +56,6 @@ def Canny(video):
 
 ## Definining the left and right lane/line and draw them
 def display_lines(video, lines):
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-    print(len(lines))
     line_video = np.zeros_like(video)
 
 
@@ -72,7 +63,6 @@ def display_lines(video, lines):
     right_line = lines[1]
     lx1, ly1, lx2, ly2 = left_line
     rx1, ry1, rx2, ry2 = right_line
-    print(lx1, ly1, lx2, ly2)
     poly = np.array([[
                     (int(lx1), int(ly1)),
                     (int(rx1), int(ry1)),
@@ -94,7 +84,6 @@ def display_lines(video, lines):
 ## Defining the drivers lane
 def region_of_interest(video):
     height = video.shape[0]
-    print(height)
     polygons = np.array([
         [(820, 340), (960,340), (1280, 520), (1280,720), (125,720)]])
     mask = np.zeros_like(video)
