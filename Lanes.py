@@ -8,9 +8,11 @@ cap = cv2.VideoCapture('cars2.mp4')
 
 
 def make_coordinates( video, line_parameters):
+    print(f"LINE PARAMAS {line_parameters}")
+    print(line_parameters.shape)
     slope, intercept = line_parameters
     y1 = video.shape[0]
-    y2 = int(y1* (3/5))
+    y2 = int(y1* (0.5))
     x1 = ((y1 - intercept) / slope)
     x2 = ((y2 - intercept) / slope)
     return np.array([x1,y1,x2,y2])
@@ -20,8 +22,9 @@ def make_coordinates( video, line_parameters):
 def average_slope_intercept(video, lines):
     left_fit=[]
     right_fit=[]
-    for line in lines: 
+    for line in lines:
         x1,y1,x2,y2 = line.reshape(4)
+        print(x1,y1,x2,y2)
         parameters = np.polyfit((x1, x2), (y1, y2), 1)
         slope = parameters[0]
         intercept = parameters[1]
@@ -29,8 +32,9 @@ def average_slope_intercept(video, lines):
             left_fit.append((slope, intercept))
         else:
             right_fit.append((slope, intercept))
-        
+
     left_fit_average = np.average(left_fit, axis = 0)
+    print(type(left_fit_average))
     right_fit_average = np.average( right_fit, axis= 0)
     left_line = make_coordinates(video, left_fit_average)
     right_line = make_coordinates(video, right_fit_average)
@@ -47,19 +51,20 @@ def display_lines(video, lines):
     line_video = np.zeros_like(video)
     if lines is not None:
         for x1, y1, x2, y2  in lines:
-            print(x1, y1 ,x2, y2)
-            cv2.line(line_video, (x1, y1), (x2, y2), (255,0,0), 10)
+            #print(x1, y1 ,x2, y2)
+            cv2.line(line_video, (int(x1), int(y1)), (int(x2), int(y2)), (255,0,0), 10)
     return line_video
 
 def region_of_interest(video):
     height = video.shape[0]
+    print(height)
     polygons = np.array([
-        [(100, height), (1900,height), (850, 350)]
-        ])
+        [(820, 340), (960,340), (1280, 520), (1280,720), (125,720)]])
     mask = np.zeros_like(video)
     cv2.fillPoly(mask, polygons, (255,255,255))
     masked_video = cv2.bitwise_and(video, mask)
     return masked_video
+
 
 
 while cap.isOpened():
