@@ -14,7 +14,7 @@ def Canny(video):
 def region_of_interest(video):
     height = video.shape[0]
     polygons = np.array([
-        [(300, height), (1800,height), (800, 350)]
+        [(100, height), (1900,height), (850, 350)]
         ])
     mask = np.zeros_like(video)
     cv2.fillPoly(mask, polygons, (255,255,255))
