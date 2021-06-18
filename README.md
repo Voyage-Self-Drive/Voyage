@@ -7,7 +7,7 @@ Applying Python and Opencv for lane detection while driving
     <img src="https://user-images.githubusercontent.com/27528504/122555292-653b5580-d03a-11eb-9217-cbb5a4849079.jpeg" alt="Logo" width="600" height="300">
   </a>
   
-  <h1 align="center">Real time lane detection for smart car driving</h1>
+  <h1 align="center">Real lane detection for smart car driving</h1>
 
 
 Scripts used for lane detection while driving
@@ -82,7 +82,7 @@ This project was built on the anaconda package, and the following installation s
 
 | Contributors | Tasks | LINKEDIN|
 | ------ | ------ | ------ |
-| Sven Skyth Henriksen | model deployment| [https://www.linkedin.com/in/sven-skyth-henriksen-4857bb1a2/]|
+| Sven Skyth Henriksen | Model deployment| [https://www.linkedin.com/in/sven-skyth-henriksen-4857bb1a2/]|
 | Mark Skinner | Model development | [https://www.linkedin.com/in/mark.skinner/]|
 | Daniel Biman | Model development | [https://www.linkedin.com/in/daniel-biman-05806a185/]|
-| Olatunde Salami  | model development | [https://www.linkedin.com/in/olatunde-salami/]|
+| Olatunde Salami  | Model development | [https://www.linkedin.com/in/olatunde-salami/]|
