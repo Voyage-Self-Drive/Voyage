@@ -84,4 +84,4 @@ This project was built on the anaconda package, and the following installation s
 | Sven Skyth Henriksen | model deployment| [https://www.linkedin.com/in/sven-skyth-henriksen-4857bb1a2/]|
 | Mark Skinner | Model development | [https://www.linkedin.com/in/mark.skinner] |
 | Daniel Biman | Model development | [https://www.linkedin.com/in/daniel-biman-05806a185/]|
-| Olatunde Salami  | Project Manager | [https://www.linkedin.com/in/olatunde-salami/]|
+| Olatunde Salami  | model development | [https://www.linkedin.com/in/olatunde-salami/]|
