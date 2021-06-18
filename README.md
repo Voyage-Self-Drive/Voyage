@@ -1,18 +1,19 @@
 # Voyage
-Scripts used for lane detection while driving
+Applying Python and Opencv for lane detection while driving
 
 
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://user-images.githubusercontent.com/27528504/120189327-7e10d200-c217-11eb-9c1c-1f7721fb2d4f.png" alt="Logo" width="400" height="150">
+    <img src="https://user-images.githubusercontent.com/27528504/122555292-653b5580-d03a-11eb-9217-cbb5a4849079.jpeg" alt="Logo" width="600" height="300">
   </a>
-
+  
   <h1 align="center">Real time lane detection for smart car driving</h1>
 
 
-Applying Python and Opencv for lane detection while driving
+Scripts used for lane detection while driving
 
 In Lanes.py,  is a script where opencv was deployed to preprocess each frame and detect lanes on the road. You can test the result on the cars2.mp4.
+
 Here is a short presentation of this project: https://docs.google.com/presentation/d/1bpDDgozkksV3VoO_ukPrCPahzJl7FlEJeR93rsXWnNM/edit?usp=sharing
 
 
